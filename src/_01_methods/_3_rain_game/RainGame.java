@@ -82,12 +82,12 @@ public class RainGame extends PApplet {
     	fill(color4,color5,color6);
     	ellipse(x,y,50,10);
     	y+=1 + score;
-    	if (y==600) {
+    	if (y>600) {
     		
     	}
     	image(bucket, mouseX -50, 500);
     	if (y>550) {
-    		checkCatch(mouseX);
+    		checkCatch(x +50);
     		y=0;
     		x=xRan;
     	}
