@@ -10,15 +10,23 @@ import org.jointheleague.graphical.robot.Robot;
 
 public class TooManyShapes {
 	static Robot rob = new Robot();
+	
 
 	public static void main(String[] args) {
+		rob.hide();
 		//1. Ask the user how many sides they want their shape to be
-		
+		String sides = JOptionPane.showInputDialog("how many sides do you want on your shape?");
+		int sidesInt = Integer.parseInt(sides);
 		//2. Ask the user how many shapes they want
-		
+		String shapeCount = JOptionPane.showInputDialog("how many shapes do you want?");
+		int shapeCountInt = Integer.parseInt(shapeCount);
 		//3. Call canMakeShape() and save what is returned into a variable
-		
+		boolean canShape = canMakeShape(sidesInt);
 		//4. If the shape CAN be drawn
+		if (canShape) {
+			int angle = calculateTurnAngle(sidesInt);
+			drawPolygons(sidesInt,shapeCountInt,angle);
+		}
 		
 			//5. Call and save what is returned from calculateTurnAngle()
 		
@@ -38,7 +46,7 @@ public class TooManyShapes {
 	static void drawPolygons(int numSides, int numShapes, int degrees) {
 		rob.setSpeed(100);
 		rob.penDown();
-		int dist = 25;
+		int dist = 1;
 		Random rand = new Random();
 		
 		for(int i = 0; i < numShapes; i++) {

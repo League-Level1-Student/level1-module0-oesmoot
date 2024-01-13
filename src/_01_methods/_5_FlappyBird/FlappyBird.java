@@ -15,8 +15,9 @@ public class FlappyBird extends PApplet {
     Random ran = new Random();
     int h1 = ran.nextInt(500);
     int pipeGap = 150;
-    int lowerY = h1 +=pipeGap;
+    int lowerY = h1 +pipeGap;
     int upperY = 0;
+    int score = 0;
     
     @Override
     public void settings() {
@@ -36,9 +37,13 @@ public class FlappyBird extends PApplet {
     @Override
     public void draw() {
     	background(255,255,255);
-    	if (pipeX < 1) {
+    	if (pipeX < -51) {
     		pipeX = 750;
     		h1 = ran.nextInt(500);
+    		lowerY = h1 + pipeGap;
+    	}
+    	if (birdX == pipeX + 75) {
+    		score++;
     	}
 	   
     	if (mousePressed) {
@@ -52,8 +57,20 @@ public class FlappyBird extends PApplet {
     	stroke(255,255,0);
     	ellipse(birdX, birdY, 50, 50);
     	birdY+=birdYVelocity;
-    	pipeX -= 8;
+    	pipeX -= 5;
+    	fill (0,0,0);
+    	text("score: " + score, 100,100);
+    	if (intersectsPipes()) {
+    	exit();	
+    	}
     }
+    boolean intersectsPipes() { 
+        if (birdY < h1 && birdX > pipeX && birdX < (pipeX+50)){
+           return true; }
+       else if (birdY>lowerY && birdX > pipeX && birdX < (pipeX+50)) {
+           return true; }
+       else { return false; }
+}
     static public void main(String[] args) { int pipeGap = 150;
         PApplet.main(FlappyBird.class.getName());
     }
