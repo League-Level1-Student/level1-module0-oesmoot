@@ -25,23 +25,24 @@ public class MyFirstSwingGUI {
 		// 4. Set the default close operation to JFrame.EXIT_ON_CLOSE
 		fram.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);;
 		// 5. Create and initialize an object of the JPanel class
-
+		JPanel panle = new JPanel();
 		// 6. Create and initialize an object of the JLabel class
-
+		JLabel labll = new JLabel();
 		// 7. Set the text of the JLabel to a lovely greeting.
-
+		labll.setText("why heloo there!");
 		// 8. Add the JPanel object to the JFrame
-
+		fram.add(panle);
 		// 9. Add the JLabel object to the JPanel
-
+		panle.add(labll);
 		// 10. Pack your JFrame.
-
+		fram.pack();
 		// 11. Run your program again. Do you see your message.
 
 		// 12. Use the loadImage method to set the icon of the JLabel object.
-
+		ImageIcon ico =loadImage();
+		labll.setIcon(ico);
 		// 13. Re-pack the JFrame object.
-
+		fram.pack();
 		// 14. Run the program one more time. Do you see the image?
 
 	}
