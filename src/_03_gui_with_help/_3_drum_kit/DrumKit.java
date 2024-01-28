@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import game_tools.Sound;
 
 public class DrumKit implements MouseListener {
-    static boolean canPlaySounds = true; // Set this to false if your computer cannot play sounds
+    static boolean canPlaySounds = false; // Set this to false if your computer cannot play sounds
     JLabel drumLabel;
 
     public void run() {
@@ -35,17 +35,17 @@ public class DrumKit implements MouseListener {
         //  Drum Kit recipe package.
 
         //  Put the name of the drum image file in a String variable.
-
+    	String snare = "snare.jpg";
         //  Edit the next line to use your String variable
         // drumLabel = createLabelImage(drumImageString);
-
+    	drumLabel = createLabelImage(snare);
         //  Add the label to the panel
-
+    	panel.add(drumLabel);
         //  Call the pack() method on the frame.
         // Run your program. Do you see your drum image?
-
+    	frame.pack();
         // Add this MouseListener to drumLabel
-
+    	drumLabel.addMouseListener(this);
         // *** Write the code in the mouseClicked() method below
 
         //  Set the layout of the panel to "new GridLayout()"
@@ -60,19 +60,21 @@ public class DrumKit implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         // Print "mouse clicked" to the console. Run your program and watch
         // the console to see when this is printed.
-
+    	System.out.println("mouse clicked");
         //JLabel labelClicked = (JLabel) e.getSource(); // This line gets the label
                                                         // that the mouse
                                                         // clicked on
-
+    	JLabel labelClicked = (JLabel) e.getSource();
         // You can use the drum sound provided ("drum.wav") or
         // download another drum sound (.wav) and drop it into the Drum Kit package.
         // You can find sounds on freesound.org, and to download from there, you must log in
         // Ask your teacher for The League's login information.
-
+    	
         //  If the user clicks on the drumImage...use the playSound method to play the drum sound.
         //  Test to see if it works before moving on.
-
+    	if (labelClicked == (drumLabel)) {
+    		playSound("drum.wav");
+    	}
     }
 
     private JLabel createLabelImage(String fileName) {
